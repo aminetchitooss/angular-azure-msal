@@ -1,9 +1,9 @@
 {
 	"$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
 	"schematics": {
-		"schematicazure": {
-			"description": "A blank schematic.",
-			"factory": "./schematicazure/index#schematicazure"
+		"ng-add": {
+			"description": "A schematic that creates an azure msal workflow with login and home modules.",
+			"factory": "./ng-add/index#ngAdd"
 		}
 	}
 }
