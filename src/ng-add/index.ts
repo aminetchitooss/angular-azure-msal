@@ -22,7 +22,7 @@ export function ngAdd(options: MsalSchematicOption): Rule {
           clientId: options.clientId,
           tenantId: options.tenantId
         }),
-        move(options.srcDir)
+        move(options.appDir)
       ])
     )
   ]);
