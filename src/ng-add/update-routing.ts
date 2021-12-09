@@ -1,4 +1,5 @@
 import { SchematicContext, Tree } from "@angular-devkit/schematics";
+import { MsalSchematicOption } from ".";
 import { updateFile } from "./update-file";
 
 const updatdContent = `import { NgModule } from "@angular/core";
@@ -45,6 +46,8 @@ const routes: Routes = [
 export class AppRoutingModule {}
 `;
 
-export function updateRouting(_host: Tree, _context: SchematicContext): Tree {
-  return updateFile(_host, _context, "./testSrc/app/app-routing.module.ts", updatdContent);
+export function updateAppRouting(options: MsalSchematicOption) {
+  return (_host: Tree, _context: SchematicContext) => {
+    return updateFile(_host, _context, "app-routing.module.ts", updatdContent, options);
+  };
 }

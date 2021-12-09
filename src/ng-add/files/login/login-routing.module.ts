@@ -5,11 +5,11 @@ import { LoginComponent } from './login.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'failed', component: FailedLoginComponent },
+  { path: 'failed', component: FailedLoginComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class LoginRoutingModule {}

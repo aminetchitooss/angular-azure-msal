@@ -3,7 +3,7 @@ import { MsalService } from '@azure/msal-angular';
 import { DEFAULT_ROUTE } from '../global-utils/constants';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
   constructor(public msal: MsalService) {}
@@ -16,11 +16,7 @@ export class AuthService {
   }
 
   getRedirectBeforeLogin(): string {
-    return decodeURIComponent(
-      window.location.href.indexOf('redirectURL=') > -1
-        ? window.location.href.split('redirectURL=')[1]
-        : DEFAULT_ROUTE
-    );
+    return decodeURIComponent(window.location.href.indexOf('redirectURL=') > -1 ? window.location.href.split('redirectURL=')[1] : DEFAULT_ROUTE);
   }
 
   getRedirectAfterLogin(): string {

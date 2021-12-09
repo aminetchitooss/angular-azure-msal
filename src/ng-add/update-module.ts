@@ -1,7 +1,8 @@
 import { SchematicContext, Tree } from "@angular-devkit/schematics";
+import { MsalSchematicOption } from ".";
 import { updateFile } from "./update-file";
 
-const updatdContent = `import { NgModule } from "@angular/core";
+const updatedContent = `import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -96,6 +97,8 @@ export class AppModule {}
 
 `;
 
-export function updateModule(_host: Tree, _context: SchematicContext): Tree {
-  return updateFile(_host, _context, "./testSrc/app/app.module.ts", updatdContent);
+export function updateAppModule(options: MsalSchematicOption) {
+  return (_host: Tree, _context: SchematicContext) => {
+    return updateFile(_host, _context, "app.module.ts", updatedContent, options);
+  };
 }

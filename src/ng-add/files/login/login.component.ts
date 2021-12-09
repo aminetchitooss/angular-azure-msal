@@ -2,12 +2,7 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MsalBroadcastService, MsalService } from '@azure/msal-angular';
-import {
-  EventMessage,
-  EventType,
-  InteractionStatus,
-  AuthenticationResult,
-} from '@azure/msal-browser';
+import { EventMessage, EventType, InteractionStatus, AuthenticationResult } from '@azure/msal-browser';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { validateEmail } from '../shared/global-utils/functions';
@@ -16,14 +11,12 @@ import { AuthService } from '../shared/services/auth.service';
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   loginDisplay: boolean | null = null;
 
-  userNameCtrl = new FormControl('amine.tchita.infogene@servier.com', [
-    Validators.required,
-  ]);
+  userNameCtrl = new FormControl('amine.tchita.infogene@servier.com', [Validators.required]);
   nameChangeSub: Subscription = new Subscription();
 
   constructor(
@@ -35,23 +28,15 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.msalBroadcastService.msalSubject$
-      .pipe(
-        filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS)
-      )
-      .subscribe((result: EventMessage) => {
-        console.log(result);
-        const payload = result.payload as AuthenticationResult;
-        this.msalService.instance.setActiveAccount(payload.account);
-      });
+    this.msalBroadcastService.msalSubject$.pipe(filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS)).subscribe((result: EventMessage) => {
+      console.log(result);
+      const payload = result.payload as AuthenticationResult;
+      this.msalService.instance.setActiveAccount(payload.account);
+    });
 
-    this.msalBroadcastService.inProgress$
-      .pipe(
-        filter((status: InteractionStatus) => status === InteractionStatus.None)
-      )
-      .subscribe(() => {
-        this.setLoginDisplay();
-      });
+    this.msalBroadcastService.inProgress$.pipe(filter((status: InteractionStatus) => status === InteractionStatus.None)).subscribe(() => {
+      this.setLoginDisplay();
+    });
   }
 
   setLoginDisplay() {
@@ -72,10 +57,9 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
     this.nameChangeSub = this.userNameCtrl.valueChanges.subscribe(() => {
       const valid =
         validateEmail(this.userNameCtrl.value) &&
-        (this.userNameCtrl.value.toUpperCase().split('SERVIER').length > 1 ||
-          this.userNameCtrl.value.toUpperCase().split('BIOGARAN').length > 1);
+        (this.userNameCtrl.value.toUpperCase().split('SERVIER').length > 1 || this.userNameCtrl.value.toUpperCase().split('BIOGARAN').length > 1);
       this.userNameCtrl.setErrors({
-        wrongMail: !valid,
+        wrongMail: !valid
       });
       if (valid) this.userNameCtrl.updateValueAndValidity({ emitEvent: false });
     });

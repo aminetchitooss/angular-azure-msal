@@ -4,9 +4,13 @@
   "title": "My Full Schematics Schema",
   "type": "object",
   "properties": {
-    "index": {
-      "type": "number",
-      "default": 1
+    "srcDir": {
+      "type": "string",
+      "default": "./testSrc/"
+    },
+    "appDir": {
+      "type": "string",
+      "default": "./testSrc/app/"
     },
     "clientId": {
       "type": "string",

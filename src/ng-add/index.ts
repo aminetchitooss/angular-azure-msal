@@ -1,22 +1,28 @@
-import { Rule, SchematicContext, Tree, chain, noop, mergeWith, apply, url, template } from "@angular-devkit/schematics";
-import { updateModule } from "./update-module";
-import { updateRouting } from "./update-routing";
+import { Rule, SchematicContext, Tree, chain, noop, mergeWith, apply, url, template, move } from "@angular-devkit/schematics";
 import { NodePackageInstallTask } from "@angular-devkit/schematics/tasks";
+import { updateAppModule } from "./update-module";
+import { updateAppRouting } from "./update-routing";
 import { updateIndex } from "./update-index";
-import { updateAppHtml } from "./update-app-html";
-import { updateAppTs } from "./update-app-ts";
+import { updateAppHtml, updateAppTs } from "./update-app.component.files";
 
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
-export function ngAdd(options: any): Rule {
+export function ngAdd(options: MsalSchematicOption): Rule {
   return chain([
     options && options.skipPackageJson ? noop() : addPackageJsonDependency(),
+    updateAppTs(options),
+    updateAppHtml(options),
+    updateIndex(options),
+    updateAppModule(options),
+    updateAppRouting(options),
+
     mergeWith(
       apply(url("./files"), [
         template({
-          INDEX: options.index,
-          name: options.name
-        })
+          clientId: options.clientId,
+          tenantId: options.tenantId
+        }),
+        move(options.srcDir)
       ])
     )
   ]);
@@ -57,15 +63,14 @@ function addPackageJsonDependency() {
 
       _context.addTask(new NodePackageInstallTask());
     }
-    let host = _host;
-
-    host = updateAppTs(host, _context);
-    host = updateAppHtml(host, _context);
-
-    host = updateIndex(host, _context);
-    host = updateRouting(host, _context);
-    host = updateModule(host, _context);
-
-    return host;
+    return _host;
   };
+}
+
+export interface MsalSchematicOption {
+  srcDir: string;
+  appDir: string;
+  clientId: string;
+  tenantId: string;
+  [key: string]: any;
 }

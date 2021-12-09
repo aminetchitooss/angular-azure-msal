@@ -1,7 +1,16 @@
 import { SchematicContext, Tree } from "@angular-devkit/schematics";
+import { MsalSchematicOption } from ".";
 import { updateFile } from "./update-file";
 
-const updatdContent = `import { Component, OnInit, OnDestroy } from '@angular/core';
+const appHtmlUpdatedContent = `<router-outlet *ngIf="!isIframe"></router-outlet>`;
+
+export function updateAppHtml(options: MsalSchematicOption) {
+  return (_host: Tree, _context: SchematicContext) => {
+    return updateFile(_host, _context, "app.component.html", appHtmlUpdatedContent, options);
+  };
+}
+
+const appTsUpdatedContent = `import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MsalService, MsalBroadcastService } from '@azure/msal-angular';
 import { InteractionStatus, EventMessage, EventType } from '@azure/msal-browser';
 import { Subject } from 'rxjs';
@@ -61,6 +70,8 @@ export class AppComponent implements OnInit, OnDestroy {
 }
 `;
 
-export function updateAppTs(_host: Tree, _context: SchematicContext): Tree {
-  return updateFile(_host, _context, "./testSrc/app/app.component.ts", updatdContent);
+export function updateAppTs(options: MsalSchematicOption) {
+  return (_host: Tree, _context: SchematicContext) => {
+    return updateFile(_host, _context, "app.component.ts", appTsUpdatedContent, options);
+  };
 }
