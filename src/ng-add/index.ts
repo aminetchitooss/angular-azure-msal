@@ -61,6 +61,8 @@ function addPackageJsonDependency() {
       }
       _context.logger.log("info", "@azure/msal-browser was added as dependency");
 
+      _host.overwrite("package.json", JSON.stringify(json, null, 2));
+
       _context.addTask(new NodePackageInstallTask());
     }
     return _host;
