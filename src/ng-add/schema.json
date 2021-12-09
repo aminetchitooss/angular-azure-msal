@@ -6,11 +6,11 @@
   "properties": {
     "srcDir": {
       "type": "string",
-      "default": "./testSrc/"
+      "default": "./src/"
     },
     "appDir": {
       "type": "string",
-      "default": "./testSrc/app/"
+      "default": "./src/app/"
     },
     "clientId": {
       "type": "string",
