@@ -48,14 +48,14 @@ function addPackageJsonDependency() {
       _context.logger.log("info", "@tchitos/azure-msal was added as dependency");
 
       const msal_angularPkg = "@azure/msal-angular";
-      const msal_angularVersion = "latest";
+      const msal_angularVersion = "^2.0.5";
       if (!json[type][msal_angularPkg]) {
         json[type][msal_angularPkg] = msal_angularVersion;
       }
       _context.logger.log("info", "@azure/msal-angular was added as dependency");
 
       const msalBrowserPkg = "@azure/msal-browser";
-      const msalBrowserVersion = "latest";
+      const msalBrowserVersion = "^2.19.0";
       if (!json[type][msalBrowserPkg]) {
         json[type][msalBrowserPkg] = msalBrowserVersion;
       }

@@ -12,6 +12,8 @@ Angular MSAL Azure - This package supports Angular 13+
 ```sh
 ng new test
 cd test
+
+# !! Make sure in the package.json to set "rxjs": "~6.6.0"
 ```
 
 2. Include Angular Azure Msal into your application.
@@ -19,7 +21,7 @@ cd test
 ```sh
 ng add @tchitos/azure-msal
 
-#The terminal will prompt and ask you to fill `clientId` and `tenantId`.
+# The terminal will prompt and ask you to fill `clientId` and `tenantId`.
 ```
 
 3. Run the application et voila!
