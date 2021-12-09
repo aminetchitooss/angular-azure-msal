@@ -1,28 +1,54 @@
-# Getting Started With Schematics
+# Angular Azure Msal
 
-This repository is a basic Schematic implementation that serves as a starting point to create and publish Schematics to NPM.
+<!-- [![npm](https://img.shields.io/npm/v/@tchitos/datetime-picker.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/@tchitos/datetime-picker)
+[![npm](https://img.shields.io/npm/dm/@tchitos/datetime-picker.svg)](https://www.npmjs.com/package/@tchitos/datetime-picker) -->
 
-### Testing
+Angular MSAL Azure - This package supports Angular 13+
 
-To test locally, install `@angular-devkit/schematics-cli` globally and use the `schematics` command line tool. That tool acts the same as the `generate` command of the Angular CLI, but also has a debug mode.
+## Installation
 
-Check the documentation with
+1. Create a new project
 
-```bash
-schematics --help
+```sh
+ng new test
+cd test
 ```
 
-### Unit Testing
+2. Include Angular Azure Msal into your application.
 
-`npm run test` will run the unit tests, using Jasmine as a runner and test framework.
+```sh
+ng add @tchitos/azure-msal
 
-### Publishing
+#The terminal will prompt and ask you to fill `clientId` and `tenantId`.
+```
 
-To publish, simply do:
+3. Run the application et voila!
+
+```sh
+ng serve
+```
+
+## Test the schematics locally
+
+1. Clone this repository.
+
+```sh
+git clone https://github.com/aminetchitooss/angular-azure-msal.git
+```
+
+2. Install dependencies
+
+```sh
+npm install
+```
+
+3. Make changes and then run
 
 ```bash
 npm run build
-npm publish
+schematics .:ng-add --dry-run=false
 ```
 
-That's it!
+## License
+
+MIT

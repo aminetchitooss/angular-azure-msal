@@ -1,44 +1,44 @@
 {
-	"name": "@tchitos/azure-msal",
-	"version": "0.0.0",
-	"description": "A schematic that creates an azure msal workflow with login and home modules.",
-	"author": {
-		"name": "tchitos"
-	},
-	"keywords": [
-		"schematics",
-		"angular azure",
-		"angular azure msal",
-		"schematics angular azure msal",
-		"schematics azure",
-		"schematics azure msal",
-		"schematics msal"
-	],
-	"scripts": {
-		"build": "tsc -p tsconfig.json",
-		"test": "npm run build && jasmine src/**/*_spec.js"
-	},
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/aminetchitooss/angular-azure-msal.git"
-	},
-	"bugs": {
-		"url": "https://github.com/aminetchitooss/angular-azure-msal/issues"
-	},
-	"homepage": "https://github.com/aminetchitooss/angular-azure-msal#readme",
-	"publishConfig": {
-		"registry": "https://registry.npmjs.org"
-	},
-	"schematics": "./src/collection.json",
-	"dependencies": {
-		"@angular-devkit/core": "^12.2.11",
-		"@angular-devkit/schematics": "^12.2.11",
-		"typescript": "~4.3.2"
-	},
-	"devDependencies": {
-		"@types/node": "^12.11.1",
-		"@types/jasmine": "~3.8.0",
-		"jasmine": "^3.5.0"
-	}
+  "name": "@tchitos/azure-msal",
+  "version": "1.0.0",
+  "description": "A schematic that creates an azure msal workflow with login and home modules.",
+  "author": {
+    "name": "tchitos"
+  },
+  "keywords": [
+    "schematics",
+    "angular azure",
+    "angular azure msal",
+    "schematics angular azure msal",
+    "schematics azure",
+    "schematics azure msal",
+    "schematics msal"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && jasmine src/**/*_spec.js"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aminetchitooss/angular-azure-msal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aminetchitooss/angular-azure-msal/issues"
+  },
+  "homepage": "https://github.com/aminetchitooss/angular-azure-msal#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^12.2.11",
+    "@angular-devkit/schematics": "^12.2.11",
+    "typescript": "~4.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.11.1",
+    "@types/jasmine": "~3.8.0",
+    "jasmine": "^3.5.0"
+  }
 }
