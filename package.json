@@ -1,6 +1,6 @@
 {
   "name": "@tchitos/azure-msal",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "A schematic that creates an azure msal workflow with login and home modules.",
   "author": {
     "name": "tchitos"
